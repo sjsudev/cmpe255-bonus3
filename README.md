@@ -26,6 +26,7 @@ Here are my dataframe columns:
     operation as we need to focus on the meaning of particular word. For instance words: Jumping, 
     Jumped, Jumper all can reduce to the stem word Jump. Below we have used the base of english 
     stopwords and stemming algorithm from nltk library.
+  - Remove HTTP links. These links don't add emergency classification relevance in my model.
 
 <p><img src="./images/drop.png"> </p>
 
@@ -50,16 +51,39 @@ Try multiple models or multiple configurations (one of them must be neural netwo
 <p><img src="./images/emergency.png"> </p>
 
 
-Select the best model, deploy it to the real application and get the realtime tweet classification. You can have one application oriented code (e.g., python server, web app, mobile app) that collects tweets in realtime and return the classification results. Document your efforts to optimize the realtime data mining pipeline and your results/screenshots of your application.
+### Select the best model, deploy it to the real application and get the realtime tweet 
+classification. You can have one application oriented code (e.g., python server, web app, mobile app) that collects tweets in realtime and return the classification results. Document your efforts to optimize the realtime data mining pipeline and your results/screenshots of your application.
+
+I have built a Python Server using Flask. The code is available in `rest-api` folder.
+
+### Neural Network with Sequential Forward Feed
+
+In my neural network model, I experiment with multiple configurations such as:
+
+- Using LSTM for better classification over sequences.
+- RELU Activation Function
+- Different Optimizers - Final is Adam.
 
 <p><img src="./images/model.png"> </p>
 
 <p><img src="./images/pythonserver.png"> </p>
 
+<p><img src="./images/servertf.png"> </p>
+
+### Logistic Regression
+
+<p><img src="./images/regression.png"> </p>
+
+<p><img src="./images/confusion.png"> </p>
+
+Accuracy is only 67% with the logistic regression model. 
+
+Based on the comparison, the neural network model is better due to higher accuracy.
 
 ## Conclusions
 
 - I used the Emergency or Not Emergency application for classifying tweets. I also labeled the tweets manually.
 - Using my scraping code, I was able to get 543 tweets for each category to achieve a balanced training dataset.
 - One improvement for my model might be to use a more complex embedding layer like GloVe 300d.
-- I achieved 80% accuracy, but overall I did not achieve higher accuracy because of under-represented dataset.
+- I achieved 80% accuracy with the neural network, but overall I did not achieve higher accuracy 
+  because of under-represented dataset.
